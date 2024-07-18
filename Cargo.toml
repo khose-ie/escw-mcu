@@ -1,0 +1,16 @@
+[package]
+name = "escw-mcu"
+version = "0.1.0"
+edition = "2021"
+authors = ["Khose-ie<hyklose@outlook.com>"]
+description = "Embedded software C wrapper of MCU."
+license = "GPLv2"
+
+[lib]
+name = "escw_mcu"
+
+[dependencies]
+
+[features]
+io = []
+uart = []
