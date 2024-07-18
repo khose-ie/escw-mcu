@@ -5,6 +5,8 @@ edition = "2021"
 authors = ["Khose-ie<hyklose@outlook.com>"]
 description = "Embedded software C wrapper of MCU."
 license = "GPL-2.0"
+repository = "https://github.com/khose-ie/escw-mcu"
+homepage = "https://github.com/khose-ie/escw-mcu"
 
 [lib]
 name = "escw_mcu"
@@ -14,3 +16,6 @@ name = "escw_mcu"
 [features]
 io = []
 uart = []
+
+[package.metadata.docs.rs]
+features = ["io", "uart"]
