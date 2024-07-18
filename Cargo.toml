@@ -4,7 +4,7 @@ version = "0.0.1"
 edition = "2021"
 authors = ["Khose-ie<hyklose@outlook.com>"]
 description = "Embedded software C wrapper of MCU."
-license = "GPLv2"
+license = "GPL-2.0"
 
 [lib]
 name = "escw_mcu"
