@@ -1,8 +1,35 @@
+//! Trats for RUST to wrap the MCU C libraries.
+
 #![no_std]
 
 pub mod common;
 pub mod peripheral;
 
+/// Trait for one MCU chip.
+///
+/// All types in this trait has combined with peripheral trait.
+/// So, when you want to define a components with some peripherals, you can only set this trait as
+/// the only one trait bound.
+///
+/// # Examples
+///
+/// Define a key with an IO.
+///
+/// ```rust
+/// struct key<T: Mcu> {
+///     io: <T::IO>
+/// }
+///
+/// impl key {
+///     fn new(io: T::IO) -> Self {
+///         key { io }    
+///     }
+///
+///     fn state(&self) -> IoState {
+///         self.io.state()
+///     }
+/// }
+/// ```
 pub trait Mcu {
     #[cfg(feature = "io")]
     type Io: peripheral::io::Io;
@@ -10,4 +37,3 @@ pub trait Mcu {
     #[cfg(feature = "uart")]
     type Uart: peripheral::uart::Uart;
 }
-
