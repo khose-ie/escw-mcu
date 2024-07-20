@@ -1,6 +1,6 @@
 [package]
 name = "escw-mcu"
-version = "0.0.1"
+version = "0.1.0"
 edition = "2021"
 authors = ["Khose-ie<hyklose@outlook.com>"]
 description = "Embedded software C wrapper of MCU."
