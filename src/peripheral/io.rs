@@ -20,6 +20,12 @@ pub trait Io: Sync {
     /// library of the specific MCU in your C code.
     fn new(port: Self::Port, pin: Self::Pin) -> Self;
 
+    /// Set the callback function for the GPIO level changed interrupt.
+    ///
+    /// This function only save a function pointer and will not do any interrupt configurations,
+    /// please do it in your C code.
+    fn with_event(&self, handle: fn());
+
     /// Get the GPIO pin level state.
     fn state(&self) -> IoState;
 
@@ -28,12 +34,6 @@ pub trait Io: Sync {
 
     /// Toggle the outputing pin level, only effective in output mode.
     fn toggle(&self);
-
-    /// Set the callback function for the GPIO level changed interrupt.
-    ///
-    /// This function only save a function pointer and will not do any interrupt configurations,
-    /// please do it in your C code.
-    fn with_event(&self, handle: fn());
 }
 
 /// Level state of a GPIO.
@@ -61,12 +61,5 @@ impl Into<u32> for IoState {
             Self::Reset => 0,
             Self::Set => 1,
         }
-    }
-}
-
-impl IoState {
-    /// Check whether the state is same with inputed one.
-    pub fn is(&self, state: IoState) -> bool {
-        *self == state
     }
 }
