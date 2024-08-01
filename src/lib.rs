@@ -42,4 +42,7 @@ pub trait Mcu {
 
     #[cfg(feature = "i2c")]
     type I2cSlave: peripheral::i2c::I2cSlaveDevice;
+
+    #[cfg(feature = "spi")]
+    type Spi: peripheral::spi::SpiDevice;
 }

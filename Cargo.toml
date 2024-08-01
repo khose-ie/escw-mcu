@@ -17,6 +17,7 @@ name = "escw_mcu"
 io = []
 uart = []
 i2c = []
+spi = []
 
 [package.metadata.docs.rs]
-features = ["io", "uart", "i2c"]
+features = ["io", "uart", "i2c", "spi"]

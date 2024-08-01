@@ -10,3 +10,6 @@ pub mod uart;
 
 #[cfg(feature = "i2c")]
 pub mod i2c;
+
+#[cfg(feature = "spi")]
+pub mod spi;
