@@ -35,5 +35,5 @@ pub trait Mcu {
     type Io: peripheral::io::Io;
 
     #[cfg(feature = "uart")]
-    type Uart: peripheral::uart::Uart;
+    type Uart: peripheral::uart::UartDevice;
 }

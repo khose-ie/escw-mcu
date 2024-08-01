@@ -1,16 +1,30 @@
-use crate::common::{AsyncKind, Result, TransmitDirection, TransmitState};
+use crate::common::Result;
 
-pub type UartEventHandle = fn(TransmitDirection, TransmitState, u16);
+pub enum UartEvent {
+    TxHalf,
+    TxCompleted,
+    TxAborted,
+    RxHalf,
+    RxCompleted(u16),
+    RxAborted,
+    TxRxAborted,
+    Error,
+}
 
-pub trait Uart {
-    type UartNum;
+pub type UartEventHandle = fn(UartEvent);
 
-    fn new(uart: Self::UartNum) -> Self;
+pub trait UartDevice: Sync {
+    type Identifies;
+
+    fn new(uart: Self::Identifies) -> Self;
     fn with_event(&mut self, handle: UartEventHandle);
     fn send(&self, data: &[u8], timeout: u32) -> Result<()>;
     fn receive(&self, data: &mut [u8], timeout: u32) -> Result<u32>;
-    fn async_send(&mut self, kind: AsyncKind, data: &[u8]) -> Result<()>;
-    fn async_receive(&mut self, kind: AsyncKind, data: &mut [u8]) -> Result<()>;
-    fn abort_async(&mut self, directon: TransmitDirection) -> Result<()>;
-    fn async_abort_async(&mut self, directon: TransmitDirection) -> Result<()>;
+    fn send_with_interrupt(&self, data: &[u8]) -> Result<()>;
+    fn receive_with_interrupt(&self, data: &mut [u8]) -> Result<()>;
+    fn send_with_dma(&self, data: &[u8]) -> Result<()>;
+    fn receive_with_dma(&self, data: &mut [u8]) -> Result<()>;
+    fn abort(&self) -> Result<()>;
+    fn abort_send(&self) -> Result<()>;
+    fn abort_receive(&self) -> Result<()>;
 }
