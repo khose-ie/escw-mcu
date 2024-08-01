@@ -13,3 +13,6 @@ pub mod i2c;
 
 #[cfg(feature = "spi")]
 pub mod spi;
+
+#[cfg(feature = "wdt")]
+pub mod wdt;
