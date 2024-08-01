@@ -36,4 +36,10 @@ pub trait Mcu {
 
     #[cfg(feature = "uart")]
     type Uart: peripheral::uart::UartDevice;
+
+    #[cfg(feature = "i2c")]
+    type I2cMaster: peripheral::i2c::I2cMasterDevice;
+
+    #[cfg(feature = "i2c")]
+    type I2cSlave: peripheral::i2c::I2cSlaveDevice;
 }

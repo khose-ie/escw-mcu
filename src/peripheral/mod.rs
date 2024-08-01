@@ -7,3 +7,6 @@ pub mod io;
 
 #[cfg(feature = "uart")]
 pub mod uart;
+
+#[cfg(feature = "i2c")]
+pub mod i2c;
