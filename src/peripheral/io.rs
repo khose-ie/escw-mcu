@@ -3,7 +3,7 @@
 // ！ The definations in this module provide a common interface to operate a GPIO pin.
 
 /// Trait providing operations of an GPIO pin.
-pub trait Io: Sync {
+pub trait IoDevice: Sync {
     /// The IO port identified ID of one MCU.
     /// For example, for STM32, it is `GPIOA``, the value is the regiter's address.
     type Port;

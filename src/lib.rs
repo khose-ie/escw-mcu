@@ -32,7 +32,7 @@ pub mod peripheral;
 /// ```
 pub trait Mcu {
     #[cfg(feature = "io")]
-    type Io: peripheral::io::Io;
+    type Io: peripheral::io::IoDevice;
 
     #[cfg(feature = "uart")]
     type Uart: peripheral::uart::UartDevice;
