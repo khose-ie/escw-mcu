@@ -19,9 +19,6 @@ pub enum I2cDirection {
 }
 
 pub trait I2cMasterDevice: Sync {
-    type Identifies;
-
-    fn new(i2c: Self::Identifies) -> Self;
     fn with_event(&mut self, handle: I2cEventHandle);
     fn device_state(&self, device: u16, trails: u32, timeout: u32) -> Result<()>;
     fn send(&self, device: u16, data: &[u8], timeout: u32) -> Result<()>;
@@ -52,9 +49,6 @@ pub trait I2cMasterDevice: Sync {
 }
 
 pub trait I2cSlaveDevice: Sync {
-    type Identifies;
-
-    fn new(i2c: Self::Identifies) -> Self;
     fn with_event(&mut self, handle: I2cEventHandle);
     fn listen(&self) -> Result<()>;
     fn send(&self, data: &[u8], timeout: u32) -> Result<()>;

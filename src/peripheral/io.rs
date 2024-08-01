@@ -4,22 +4,6 @@
 
 /// Trait providing operations of an GPIO pin.
 pub trait IoDevice: Sync {
-    /// The IO port identified ID of one MCU.
-    /// For example, for STM32, it is `GPIOA``, the value is the regiter's address.
-    type Port;
-
-    /// The pin identified ID of on MCU.
-    /// For example, for STM32, it is `PIN0``, the value is `0x00000001``.
-    type Pin;
-
-    /// Create an implementation object.
-    ///
-    /// This function will not initialize the real peripheral with MCU regiter operations.
-    /// It only create a object in memory for you to operation the IO.
-    /// Please remember to initialize and configurate the IO with MCU regiter operations or firmware
-    /// library of the specific MCU in your C code.
-    fn new(port: Self::Port, pin: Self::Pin) -> Self;
-
     /// Set the callback function for the GPIO level changed interrupt.
     ///
     /// This function only save a function pointer and will not do any interrupt configurations,
