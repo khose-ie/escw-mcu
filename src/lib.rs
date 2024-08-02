@@ -45,4 +45,7 @@ pub trait Mcu {
 
     #[cfg(feature = "spi")]
     type Spi: peripheral::spi::SpiDevice;
+
+    #[cfg(feature = "flash")]
+    type Flash: peripheral::flash::FlashDevice;
 }

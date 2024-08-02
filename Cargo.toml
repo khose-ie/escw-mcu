@@ -19,6 +19,7 @@ uart = []
 i2c = []
 spi = []
 wdt = []
+flash = []
 
 [package.metadata.docs.rs]
-features = ["io", "uart", "i2c", "spi", "wdt"]
+features = ["io", "uart", "i2c", "spi", "wdt", "flash"]

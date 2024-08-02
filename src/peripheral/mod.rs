@@ -16,3 +16,6 @@ pub mod spi;
 
 #[cfg(feature = "wdt")]
 pub mod wdt;
+
+#[cfg(feature = "flash")]
+pub mod flash;
