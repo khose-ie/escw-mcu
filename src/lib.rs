@@ -30,7 +30,8 @@ pub mod peripheral;
 ///     }
 /// }
 /// ```
-pub trait Mcu {
+pub trait Mcu
+{
     #[cfg(feature = "io")]
     type Io: peripheral::io::IoDevice;
 

@@ -3,7 +3,8 @@
 // ！ The definations in this module provide a common interface to operate a GPIO pin.
 
 /// Trait providing operations of an GPIO pin.
-pub trait IoDevice: Sync {
+pub trait IoDevice: Sync
+{
     /// Set the callback function for the GPIO level changed interrupt.
     ///
     /// This function only save a function pointer and will not do any interrupt configurations,
@@ -22,7 +23,8 @@ pub trait IoDevice: Sync {
 
 /// Level state of a GPIO.
 #[derive(PartialEq, Eq)]
-pub enum IoState {
+pub enum IoState
+{
     /// Low level, the value is `0`.
     Reset,
 
@@ -30,8 +32,10 @@ pub enum IoState {
     Set,
 }
 
-impl From<u32> for IoState {
-    fn from(value: u32) -> Self {
+impl From<u32> for IoState
+{
+    fn from(value: u32) -> Self
+    {
         match value {
             0 => Self::Reset,
             _ => Self::Set,
@@ -39,8 +43,10 @@ impl From<u32> for IoState {
     }
 }
 
-impl Into<u32> for IoState {
-    fn into(self) -> u32 {
+impl Into<u32> for IoState
+{
+    fn into(self) -> u32
+    {
         match self {
             Self::Reset => 0,
             Self::Set => 1,

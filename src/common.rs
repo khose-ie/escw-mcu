@@ -10,7 +10,8 @@ pub type Result<T> = core::result::Result<T, Error>;
 /// Every MCU fireware libraries may has their own error types.
 /// So every implementation crates need to convert between the real error types and these types.
 #[derive(Debug)]
-pub enum Error {
+pub enum Error
+{
     /// Transport a wrong parameters to the C function.
     Param,
 

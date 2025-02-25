@@ -1,6 +1,7 @@
 use crate::common::Result;
 
-pub enum I2cEvent {
+pub enum I2cEvent
+{
     TxCompleted,
     RxCompleted,
     TxRxAborted,
@@ -13,42 +14,33 @@ pub enum I2cEvent {
 
 pub type I2cEventHandle = fn(I2cEvent);
 
-pub enum I2cDirection {
+pub enum I2cDirection
+{
     Tx,
     Rx,
 }
 
-pub trait I2cMasterDevice: Sync {
+pub trait I2cMasterDevice: Sync
+{
     fn with_event(&mut self, handle: I2cEventHandle);
     fn device_state(&self, device: u16, trails: u32, timeout: u32) -> Result<()>;
     fn send(&self, device: u16, data: &[u8], timeout: u32) -> Result<()>;
     fn receive(&self, device: u16, data: &mut [u8], timeout: u32) -> Result<()>;
-    fn memory_write(
-        &self, device: u16, address: u16, wide: u16, data: &[u8], timeout: u32,
-    ) -> Result<()>;
-    fn memory_read(
-        &self, device: u16, address: u16, wide: u16, data: &mut [u8], timeout: u32,
-    ) -> Result<()>;
+    fn memory_write(&self, device: u16, address: u16, wide: u16, data: &[u8], timeout: u32) -> Result<()>;
+    fn memory_read(&self, device: u16, address: u16, wide: u16, data: &mut [u8], timeout: u32) -> Result<()>;
     fn send_with_interrupt(&self, device: u16, data: &[u8]) -> Result<()>;
     fn receive_with_interrupt(&self, device: u16, data: &mut [u8]) -> Result<()>;
-    fn memory_write_with_interrupt(
-        &self, device: u16, address: u16, wide: u16, data: &[u8],
-    ) -> Result<()>;
-    fn memory_read_with_interrupt(
-        &self, device: u16, address: u16, wide: u16, data: &mut [u8],
-    ) -> Result<()>;
+    fn memory_write_with_interrupt(&self, device: u16, address: u16, wide: u16, data: &[u8]) -> Result<()>;
+    fn memory_read_with_interrupt(&self, device: u16, address: u16, wide: u16, data: &mut [u8]) -> Result<()>;
     fn send_with_dma(&self, device: u16, data: &[u8]) -> Result<()>;
     fn receive_with_dma(&self, device: u16, data: &mut [u8]) -> Result<()>;
-    fn memory_write_with_dma(
-        &self, device: u16, address: u16, wide: u16, data: &[u8],
-    ) -> Result<()>;
-    fn memory_read_with_dma(
-        &self, device: u16, address: u16, wide: u16, data: &mut [u8],
-    ) -> Result<()>;
+    fn memory_write_with_dma(&self, device: u16, address: u16, wide: u16, data: &[u8]) -> Result<()>;
+    fn memory_read_with_dma(&self, device: u16, address: u16, wide: u16, data: &mut [u8]) -> Result<()>;
     fn abort(&self, device: u16) -> Result<()>;
 }
 
-pub trait I2cSlaveDevice: Sync {
+pub trait I2cSlaveDevice: Sync
+{
     fn with_event(&mut self, handle: I2cEventHandle);
     fn listen(&self) -> Result<()>;
     fn send(&self, data: &[u8], timeout: u32) -> Result<()>;

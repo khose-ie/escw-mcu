@@ -1,6 +1,7 @@
 use crate::common::Result;
 
-pub enum UartEvent {
+pub enum UartEvent
+{
     TxHalf,
     TxCompleted,
     TxAborted,
@@ -13,7 +14,8 @@ pub enum UartEvent {
 
 pub type UartEventHandle = fn(UartEvent);
 
-pub trait UartDevice: Sync {
+pub trait UartDevice: Sync
+{
     fn with_event(&mut self, handle: UartEventHandle);
     fn send(&self, data: &[u8], timeout: u32) -> Result<()>;
     fn receive(&self, data: &mut [u8], timeout: u32) -> Result<u32>;

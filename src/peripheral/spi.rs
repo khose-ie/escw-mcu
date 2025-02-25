@@ -1,6 +1,7 @@
 use crate::common::Result;
 
-pub enum SpiEvent {
+pub enum SpiEvent
+{
     TxHalf,
     TxCompleted,
     RxHalf,
@@ -13,7 +14,8 @@ pub enum SpiEvent {
 
 pub type SpiEventHandle = fn(SpiEvent);
 
-pub trait SpiDevice: Sync {
+pub trait SpiDevice: Sync
+{
     fn with_event(&mut self, handle: SpiEventHandle);
     fn send(&self, data: &[u8], timeout: u32) -> Result<()>;
     fn receive(&self, data: &mut [u8], timeout: u32) -> Result<()>;
