@@ -7,7 +7,7 @@ mod io_state;
 pub use io_state::IoState;
 
 /// Trait providing operations of an GPIO pin.
-pub trait IoDevice: Sync
+pub trait IoDevice
 {
     type Pin;
 
