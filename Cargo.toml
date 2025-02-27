@@ -10,11 +10,12 @@ homepage = "https://github.com/khose-ie/escw-mcu"
 
 [lib]
 name = "escw_mcu"
+test = false
+bench = false
 
 [dependencies]
 
 [features]
-io = []
 uart = []
 i2c = []
 spi = []
@@ -22,4 +23,4 @@ wdt = []
 flash = []
 
 [package.metadata.docs.rs]
-features = ["io", "uart", "i2c", "spi", "wdt", "flash"]
+features = ["uart", "i2c", "spi", "wdt", "flash"]
