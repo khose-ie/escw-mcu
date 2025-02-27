@@ -33,8 +33,6 @@ pub mod peripheral;
 pub trait Mcu
 {
     type Io: peripheral::io::IoDevice;
-
-    #[cfg(feature = "uart")]
     type Uart: peripheral::uart::UartDevice;
 
     #[cfg(feature = "i2c")]

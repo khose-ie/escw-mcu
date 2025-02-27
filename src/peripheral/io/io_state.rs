@@ -1,6 +1,6 @@
 /// Level state of a GPIO.
 #[repr(u32)]
-#[derive(PartialEq, Eq)]
+#[derive(PartialEq, Eq, Clone, Copy)]
 pub enum IoState
 {
     /// Low level, the value is `0`.

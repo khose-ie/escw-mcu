@@ -16,11 +16,10 @@ bench = false
 [dependencies]
 
 [features]
-uart = []
 i2c = []
 spi = []
 wdt = []
 flash = []
 
 [package.metadata.docs.rs]
-features = ["uart", "i2c", "spi", "wdt", "flash"]
+features = ["i2c", "spi", "wdt", "flash"]

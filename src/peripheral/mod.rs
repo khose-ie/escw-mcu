@@ -3,8 +3,6 @@
 //! Provides the trait for common peripherals including GPIO, UART, SPI, IIC and so on.
 
 pub mod io;
-
-#[cfg(feature = "uart")]
 pub mod uart;
 
 #[cfg(feature = "i2c")]

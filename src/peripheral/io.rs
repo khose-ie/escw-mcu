@@ -15,7 +15,7 @@ pub trait IoDevice
     ///
     /// This function only save a function pointer and will not do any interrupt configurations,
     /// please do it in your C code.
-    fn with_event(&self, handle: fn(pin: Self::Pin));
+    fn with_event(&self, handle: fn(Self::Pin));
 
     /// Get the GPIO pin level state.
     fn state(&self) -> IoState;
